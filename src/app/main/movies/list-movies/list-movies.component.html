@@ -1,0 +1,61 @@
+<div
+  class="container d-flex justify-content-center align-items-center flex-column p-5 gap-2"
+>
+  <div class="d-flex gap-3">
+    <button mat-raised-button color="primary" (click)="ascendingSortByTitle()">
+      Ascending Title
+    </button>
+    <button mat-raised-button color="primary" (click)="descendingSortByTitle()">
+      Descending Title
+    </button>
+    <button mat-raised-button color="primary" (click)="ascendingSortByDate()">
+      Ascending Date
+    </button>
+    <button mat-raised-button color="primary" (click)="descendingSortByDate()">
+      Descending Date
+    </button>
+  </div>
+  <div *ngFor="let movie of movies">
+    <mat-card class="col-sm-6 text-center p-2 card">
+      <div class="d-flex w-100">
+        <img
+          class="image w-50 h-50"
+          (click)="redirectToMovie(movie?.title)"
+          [src]="movie.thumbnail"
+        />
+        <div class="d-flex justify-content-between w-100">
+          <div
+            class="d-flex flex-column justify-content-between gap-4 pt-3 column"
+          >
+            <span class="fs-3 title">{{ movie?.title }}</span>
+            <div class="d-flex flex-column" style="text-align: left">
+              <span style="color: darkgray">Description: </span>
+              <span> {{ movie?.description }} </span>
+            </div>
+            <div class="d-flex align-items-center gap-2">
+              <span class="subtitle">{{ movie?.released_date }} </span>
+            </div>
+            <button
+              mat-raised-button
+              color="primary"
+              class="pt-4 pb-4"
+              (click)="favorited(movie.title)"
+              *ngIf="!favoritedsTitles.includes(movie?.title)"
+            >
+              Add to Watch List
+            </button>
+            <button
+              mat-raised-button
+              color="primary"
+              class="pt-4 pb-4"
+              *ngIf="favoritedsTitles.includes(movie?.title)"
+              (click)="unfavorited(movie.title)"
+            >
+              Remove from Watch List
+            </button>
+          </div>
+        </div>
+      </div>
+    </mat-card>
+  </div>
+</div>
