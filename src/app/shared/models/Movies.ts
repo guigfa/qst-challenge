@@ -5,6 +5,6 @@ export interface Movie {
     duration: string
     genre: string[]
     released_date: Date
-    trailer_link: URL,
+    trailer_link: string,
     thumbnail: URL
 }

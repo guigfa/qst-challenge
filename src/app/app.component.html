@@ -1,5 +1,18 @@
-<mat-toolbar color="primary">
-    <span routerLink="">Movies to Watch!</span>
+<mat-toolbar color="primary" class=" d-flex justify-content-between " >
+    <div routerLink="" style="cursor: pointer">Movies to Watch!</div>
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item routerLink="">
+          <mat-icon>home</mat-icon>
+          <span>Home</span>
+        </button>
+        <button mat-menu-item routerLink="to-watch">
+          <mat-icon>voicemail</mat-icon>
+          <span>To Watch!</span>
+        </button>
+      </mat-menu>
 </mat-toolbar>
 
 <router-outlet></router-outlet>

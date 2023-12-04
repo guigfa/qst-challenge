@@ -1,1 +1,50 @@
-{{ movie.title }}
+<div
+  class="container d-flex align-items-center mt-1 justify-content-center flex-column"
+>
+  <div style="height: 50px"></div>
+  <button mat-raised-button color="warn" routerLink="">Go to Home</button>
+
+  <mat-card class="w-100 h-50 m-3 p-3">
+    <span class="fs-1 pb-5 d-flex justify-content-center pt-3">{{ movie?.title }}</span>
+
+    <div class="wrapper d-flex justify-content-center w-100 h-25">
+      <iframe [src]="trailer" frameborder="1" allowfullscreen></iframe>
+      <span>Trailer</span>
+    </div>
+    
+    <mat-accordion class="accordion w-100">
+      <mat-expansion-panel class="expansion-panel" [expanded]="false">
+        <mat-expansion-panel-header class="d-flex align-items-center">
+          <mat-panel-title class="additionals-title">
+            Details:
+          </mat-panel-title>
+
+          <hr />
+        </mat-expansion-panel-header>
+        <div class="row d-flex justify-content-center">
+          <div class="d-flex justify-content-between">
+            <div class="d-flex gap-5 flex-column">
+              <div class="d-flex flex-column align-items-baseline gap-2">
+                <span class="fs-4">Released Date:</span>
+                <span class="subtitle">{{ movie?.released_date }}</span>
+              </div>
+              <div class="d-flex flex-column align-items-baseline gap-2">
+                <span class="fs-4">Description:</span>
+                <span class="subtitle">{{ movie?.description }}</span>
+              </div>
+              <div class="d-flex flex-column align-items-baseline gap-2">
+                <span class="fs-4">Duration:</span>
+                <span class="subtitle">{{ movie?.duration }}</span>
+              </div>
+              <div class="d-flex flex-column align-items-baseline gap-2">
+                <span class="fs-4">Genre:</span>
+                <span class="subtitle">{{ movie?.genre }} </span>
+              </div>
+            </div>
+            <img [src]="movie?.thumbnail" class="w-50 h-50 mb-20" />
+          </div>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </mat-card>
+</div>
